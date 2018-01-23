@@ -9,7 +9,7 @@ namespace IvanAkcheurov.NClassify
     public class NaiveBayesClassifier<TItem, TFeature, TCategory> : ICategorizedClassifier<TItem, TCategory>
         where TItem: IEnumerable<TFeature>
     {
-        private Dictionary<TCategory, DistributionAndMinEventCount<TFeature>> _categoryAndFeatures;
+        private Dictionary<TCategory, DistributionAndMinEventCount> _categoryAndFeatures;
         private double? _kSmoothFactor;
         private long _globalTotalEventCount;
         private long _globalDistinctEventCount;
@@ -26,7 +26,7 @@ namespace IvanAkcheurov.NClassify
                 knownInstances.ToDictionary(
                 _ => _.Key,
                 distr =>
-                new DistributionAndMinEventCount<TFeature>
+                new DistributionAndMinEventCount
                     {
                         Distribution = distr.Value,
                         // APPROXIMATION! Noise feature occurs on average twice less than the least frequent represented feature.
@@ -93,7 +93,7 @@ namespace IvanAkcheurov.NClassify
             return result.OrderByDescending(t => t.Item2);
         }
 
-        private class DistributionAndMinEventCount<TFeature>
+        private class DistributionAndMinEventCount
         {
             public IDistribution<TFeature> Distribution { get; set; }
             public double AverageNoiseFeatureFrequencyLog { get; set; }

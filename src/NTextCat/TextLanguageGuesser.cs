@@ -10,7 +10,7 @@ namespace NTextCat
 {
     class TextLanguageGuesser : ITrainee<string>, ICategorizedClassifier<string, CultureInfo>
     {
-        private KnnMonoCategorizedClassifier<IDistribution<string>, CultureInfo> _classifier;
+        // private KnnMonoCategorizedClassifier<IDistribution<string>, CultureInfo> _classifier;
 
         public void LearnMatch(string obj)
         {

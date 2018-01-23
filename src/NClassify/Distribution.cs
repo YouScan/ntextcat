@@ -39,8 +39,8 @@ namespace IvanAkcheurov.NClassify
         public IEnumerator<KeyValuePair<T, double>> GetEnumerator()
         {
             throw new NotImplementedException("Maybe a bug, should be divided by _totalEventCountWithNoise");
-            long count = _store.TotalCopiesCount;
-            return _store.Select(kvp => new KeyValuePair<T, double>(kvp.Key, kvp.Value / (double)count)).GetEnumerator();
+            // long count = _store.TotalCopiesCount;
+            // return _store.Select(kvp => new KeyValuePair<T, double>(kvp.Key, kvp.Value / (double)count)).GetEnumerator();
         }
 
         #endregion

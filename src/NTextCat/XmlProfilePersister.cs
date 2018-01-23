@@ -37,8 +37,8 @@ namespace NTextCat
                     ? new XComment("WARNING! Some of the language model(s) do(es)n't have any language name assigned")
                     : new XComment("Contains models for the following languages (by " + f.Key  + "): " + String.Join(", ", f.Value));
 
-            if (languageModelsCache.Any(lm => lm.Language.Iso639_3 != null))
-                ;
+            // if (languageModelsCache.Any(lm => lm.Language.Iso639_3 != null))
+            //    ;
             var persister = new XmlLanguageModelPersister<T>();
             var xDoc =
                 new XDocument(
