@@ -4,7 +4,7 @@ pipeline {
         timestamps() 
     }
     environment {
-        VERSION_SUFFIX = "${(env.BRANCH_NAME == 'master' ? '' : env.BRANCH_NAME) + env.BUILD_NUMBER}"
+        VERSION_SUFFIX = "${(env.BRANCH_NAME == 'master' ? '' : env.BRANCH_NAME + env.BUILD_NUMBER)}"
     }
     stages {
         stage('Clean') {
@@ -33,7 +33,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'nugetorg_api_key', variable: 'NUGET_API_KEY')]) {
                     bat 'mkdir nupkgs\\symbols'
                     bat 'move nupkgs\\*.symbols.nupkg nupkgs\\symbols'
-                    bat 'dotnet nuget push nupkgs\\*.nupkg -k %NUGET_API_KEY% -s https://api.nuget.org/v3/index.json'
+                    bat 'dotnet nuget push nupkgs\\symbols\\*.nupkg -k %NUGET_API_KEY% -s https://api.nuget.org/v3/index.json'
                     
                     // https://www.symbolsource.org is unresponsible
                     // bat 'dotnet nuget push nupkgs\\symbols\\*.nupkg -k %NUGET_API_KEY%
