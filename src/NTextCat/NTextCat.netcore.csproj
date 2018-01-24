@@ -1,14 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>0.2.1.0</VersionPrefix>
+    <VersionPrefix>0.2.1</VersionPrefix>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
     <PackageId>YouScan.NTextCat</PackageId>
     <PackageTags>Language Identification Detection Recognition</PackageTags>
     <PackageLicenseUrl>https://github.com/YouScan/ntextcat/blob/master/src/License.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/YouScan/ntextcat</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/YouScan/ntextcat</RepositoryUrl>
-    <Description>
+    <Summary>
 NTextCat 0.2.1
 * Recommended length of a text snippet has been reduced to 5 (though mostly a single word is handled correctly).
 * Simplified and made more consistent API.
@@ -19,7 +20,7 @@ NTextCat 0.2.1
 * SqlServerClrIntegration is not in the release yet. It will be reintroduced in one of the next releases recompiled and verified for SQL Server 2012.
 * Fixed a bug in GaussianBag
 * More rigid testing routines as preparations to produce a stable release.
-    </Description>
+    </Summary>
   </PropertyGroup>
 
   <PropertyGroup>
