@@ -4,7 +4,7 @@ pipeline {
         timestamps() 
     }
     environment {
-        VERSION_SUFFIX = "${(env.BRANCH_NAME == 'master' ? '' : env.BRANCH_NAME + env.BUILD_NUMBER)}"
+        VERSION_SUFFIX = "${(env.BRANCH_NAME == 'master' ? '' : '--version-suffix ' + env.BRANCH_NAME + env.BUILD_NUMBER)}"
     }
     stages {
         stage('Clean') {
@@ -20,7 +20,7 @@ pipeline {
         stage('Pack') {
             steps {
                 echo 'Packing it with suffix "%VERSION_SUFFIX%"'
-                bat 'dotnet pack --version-suffix %VERSION_SUFFIX% --include-source --include-symbols -c Release -o ../../nupkgs ./src/NTextCat.netcore.sln'
+                bat 'dotnet pack %VERSION_SUFFIX% --include-source --include-symbols -c Release -o ../../nupkgs ./src/NTextCat.netcore.sln'
             }
         }
         stage('Artifacts') {
