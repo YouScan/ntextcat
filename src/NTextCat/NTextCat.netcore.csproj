@@ -1,19 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net4</TargetFrameworks>
     <RootNamespace>NTextCat</RootNamespace>
-    <AssemblyName>NTextCat</AssemblyName>
+    <AssemblyName>YouScan.NTextCat</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NClassify\NClassify.netcore.csproj" />
-    <ProjectReference Include="..\Commons\Commons.netcore.csproj" />
+    <Compile Include="..\Commons\EnumeratorDataReader.cs" Link="Commons\EnumeratorDataReader.cs" />
+    <Compile Include="..\Commons\StringExtensions.cs" Link="Commons\StringExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\NClassify\IFeatureExtractor.cs" Link="NClassify\IFeatureExtractor.cs" />
+    <Compile Include="..\NClassify\IDistanceCalculator.cs" Link="NClassify\IDistanceCalculator.cs" />
+    <Compile Include="..\NClassify\IDistribution.cs" Link="NClassify\IDistribution.cs" />
+    <Compile Include="..\NClassify\NaiveBayesClassifier.cs" Link="NClassify\NaiveBayesClassifier.cs" />
+    <Compile Include="..\NClassify\ICategorizedClassifier.cs" Link="NClassify\ICategorizedClassifier.cs" />
+    <Compile Include="..\NClassify\ITrainee.cs" Link="NClassify\ITrainee.cs" />
+    <Compile Include="..\NClassify\IModifiableDistribution.cs" Link="NClassify\IModifiableDistribution.cs" />
+    <Compile Include="..\NClassify\Distribution.cs" Link="NClassify\Distribution.cs" />
+    <Compile Include="..\NClassify\IBag.cs" Link="NClassify\IBag.cs" />
+    <Compile Include="..\NClassify\Bag.cs" Link="NClassify\Bag.cs" />
+    <Compile Include="..\NClassify\KnnMonoCategorizedClassifier.cs" Link="NClassify\KnnMonoCategorizedClassifier.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net4'">
+      <Reference Include="System.Configuration" />
   </ItemGroup>
 
 </Project>
